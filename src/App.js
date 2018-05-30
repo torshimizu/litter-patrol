@@ -11,7 +11,6 @@ class App extends Component {
     };
 
     this.startGame();
-    console.log(this.state.bins);
   }
 
   startGame() {
@@ -32,13 +31,18 @@ class App extends Component {
   }
 
   onTrashClicked = () => {
-    // Fill this in!
+    let currentPoints = this.state.points;
+    this.setState({points: currentPoints += 1})
   }
 
   render() {
     const bins = this.state.bins.map((bin, index) => {
       return (
-        <Trash key={`trash-${index}`} trashVisibility={bin.isTrashVisible} />
+        <Trash
+          key={`trash-${index}`}
+          trashVisibility={bin.isTrashVisible}
+          trashClicked={this.onTrashClicked}
+          />
       );
     });
 
