@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     const bins = this.state.bins.map((bin, index) => {
       return (
-        <Trash key={`trash-${index}`} />
+        <Trash key={`trash-${index}`} trashVisibility={bin.isTrashVisible} />
       );
     });
 
