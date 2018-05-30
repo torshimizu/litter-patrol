@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
-import TrashIcon from '../trash.svg';
+import CatIcon from '../cat-sleep-icon.ico';
+import CatButt from '../cat-upsidedown.ico';
 
 
 class Trash extends Component {
   static propTypes = {
     trashVisibility: PropTypes.bool,
-    trashClicked: PropTypes.func.isRequired
+    catClicked: PropTypes.func.isRequired
   }
 
-  onTrashClickedHandler = () => {
-    this.props.trashClicked()
+  onCatClickedHandler = () => {
+    this.props.catClicked(this.props.trashVisibility);
   }
 
   render() {
-    let icon = false;
+    let icon = null;
+
     if (this.props.trashVisibility) {
-      icon = <img src={ TrashIcon } onClick={this.onTrashClickedHandler} alt="Trash" className="trash"></img>
+      icon = <img src={ CatIcon } onClick={this.onCatClickedHandler} alt="Trash" className="trash"></img>
+    } else {
+      icon = <img src={ CatButt } onClick={this.onCatClickedHandler} alt="Trash" className="trash"></img>
     }
 
     return (

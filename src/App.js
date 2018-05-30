@@ -30,9 +30,14 @@ class App extends Component {
     return bins;
   }
 
-  onTrashClicked = () => {
+  onCatClicked = (catState) => {
     let currentPoints = this.state.points;
-    this.setState({points: currentPoints += 1})
+
+    if (catState) {
+      this.setState({points: currentPoints += 1});
+    } else {
+      this.setState({points: currentPoints -= 1});
+    }
   }
 
   render() {
@@ -41,7 +46,7 @@ class App extends Component {
         <Trash
           key={`trash-${index}`}
           trashVisibility={bin.isTrashVisible}
-          trashClicked={this.onTrashClicked}
+          catClicked={this.onCatClicked}
           />
       );
     });
@@ -50,6 +55,7 @@ class App extends Component {
       <div className="App">
         <section className="overall-data">
           <h1>Litter Patrol</h1>
+          <h3>Only pet a cat HEAD, if you pet a Butt, a point will be subtracted</h3>
           <h2>Points: { this.state.points }</h2>
         </section>
 
